@@ -20,9 +20,4 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void GameOver()
-    {
-        gameOver.SetActive(true);
-        Time.timeScale = 0;
-    }
 }
