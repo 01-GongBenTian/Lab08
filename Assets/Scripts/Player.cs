@@ -14,12 +14,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 position;
 
         float verticalInput = Input.GetAxis("Vertical");
 
         transform.position = transform.position + new Vector3(0 , verticalInput * speed * Time.deltaTime, 0);
 
-      
+        position = transform.position;
 
+        position.y = Mathf.Clamp(position.y, -4f, 4f);
+
+        transform.position = position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Obstacle")
+        {
+            GameManager.gameManager.GameOver();
+        }
     }
 }
